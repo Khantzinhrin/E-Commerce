@@ -10,7 +10,7 @@ export default function NavBar() {
                       bg-white/20 backdrop-blur-lg shadow-lg 
                       rounded-b-xl">
         {/* Logo */}
-        <h1 className="text-xl font-bold text-black">E-Commerce Site</h1>
+        <h1 className="text-xl font-japanese font-bold text-black">Horizon</h1>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center space-x-6">
@@ -30,7 +30,7 @@ export default function NavBar() {
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <HiX size={28} /> : <HiMenu size={28} />}
+            {menuOpen ? <HiX size={26} /> : <HiMenu size={26} />}
           </button>
         </div>
       </div>
