@@ -13,4 +13,14 @@
 /* Optional: apply globally */
 body {
   font-family: "Japanese 3017", sans-serif;
+  /* background-color: rgb(100, 99, 99); */
+}
+
+.product-dropdown {
+  transition: all 0.3s ease;
+}
+
+.product-item:hover {
+  color: #1d4ed8; /* Tailwind blue-700 equivalent */
+  font-weight: 500;
 }
