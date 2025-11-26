@@ -11,7 +11,7 @@ export default function ProductsDropdown({ categories }) {
   };
 
   const handleMouseLeave = () => {
-    timeoutId = setTimeout(() => setShow(false), 150); 
+    timeoutId = setTimeout(() => setShow(false), 150);
   };
 
   return (

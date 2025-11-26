@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
 import ProductsDropdown from "./product";
 import MobileProducts from "./mobileProduct";
+import {BrowserRouter, Link, Route, Routes} from 'react-router-dom';
+import About from "../pages/About";
+import { House } from 'lucide-react';
+import LogIn from "../Profile/Login";
 
 export default function NavBar() {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 880);
@@ -25,6 +29,7 @@ export default function NavBar() {
   }, []);
 
   return (
+    <BrowserRouter>
     <nav className="fixed w-full top-0 left-0 z-50">
       <div className="flex items-center justify-between px-6 py-4 bg-white/20 backdrop-blur-lg shadow-lg rounded-b-xl">
         <h1 className="text-xl font-japanese font-bold text-black">Horizon</h1>
@@ -32,20 +37,24 @@ export default function NavBar() {
         {/* Desktop Links */}
         {isDesktop && (
           <div className="flex items-center space-x-6">
-            <input
+            {/* <input
               type="text"
               placeholder="Search..."
               className="px-3 py-1 w-64 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            />
-            <a href="#home" className="hover:text-gray-700 text-black">Home</a>
+            /> */}
+            {/* Home link */}
+            <Link to="/" className="hover:text-gray-700 text-black focus:text-indigo-600 focus:outline-none">Home</Link>
 
             {/* Desktop Products Dropdown */}
             <ProductsDropdown categories={categories} />
-
-            <a href="#about" className="hover:text-gray-700 text-black">About</a>
-            <a href="#contact" className="hover:text-gray-700 text-black">Contact</a>
-            <a href="#login" className="text-black hover:text-gray-700">Log In</a>
-            <a href="#signup" className="text-black hover:text-gray-700">Sign Up</a>
+            {/* CORRECTED: Changed /About to /about */}
+            <Link to="/about" className="hover:text-gray-700 text-black focus:text-indigo-600 focus:outline-none">
+              About
+            </Link>
+            {/* Contact, Log In, and Sign Up links */}
+            <Link to="/contact" className="hover:text-gray-700 text-black focus:text-indigo-600">Contact</Link>
+            <Link to="/login" className="text-black hover:text-gray-700">Log In</Link>
+            <Link to="/signup" className="text-black hover:text-gray-700">Sign Up</Link>
           </div>
         )}
 
@@ -67,17 +76,24 @@ export default function NavBar() {
             placeholder="Search..."
             className="w-full px-3 py-1 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
-          <a href="#home" className="block text-black hover:text-gray-700">Home</a>
+          {/* Mobile Home link */}
+          <Link to="/" className="block text-black hover:text-gray-700"><House /></Link>
 
           {/* Mobile Products Collapsible */}
           <MobileProducts categories={categories} />
 
-          <a href="#about" className="block text-black hover:text-gray-700">About</a>
-          <a href="#contact" className="block text-black hover:text-gray-700">Contact</a>
-          <a href="#login" className="block text-black hover:text-gray-700">Log In</a>
-          <a href="#signup" className="block text-black hover:text-gray-700">Sign Up</a>
+          {/* Mobile About link */}
+          <Link to="/about" className="block text-black hover:text-gray-700">About</Link>
+          <Link to="/contact" className="block text-black hover:text-gray-700">Contact</Link>
+          <Link to="/login" className="block text-black hover:text-gray-700">Log In</Link>
+          <Link to="/signup" className="block text-black hover:text-gray-700">Sign Up</Link>
         </div>
       )}
+      <Routes>
+         <Route path="/about" element={<About />} />
+         <Route path="/login" element={<LogIn />} />
+      </Routes>
     </nav>
+    </BrowserRouter>
   );
 }
